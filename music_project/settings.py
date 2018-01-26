@@ -89,13 +89,18 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-
-                # `allauth` needs this from django
-                'django.template.context_processors.request',
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 WSGI_APPLICATION = 'music_project.wsgi.application'
 
@@ -149,21 +154,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AUTHENTICATION_BACKENDS = (
-    # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
-)
 
 SITE_ID = 1
 
 '''
 http://www.marinamele.com/user-authentication-with-google-using-django-allauth
 https://www.youtube.com/watch?v=1yqKNQ3ogKQ
+https://www.youtube.com/watch?v=iG2KCbEZ-_Q
 logar na aplicação localmente
 http://127.0.0.1:8000/accounts/login/
+
+Python Social Auth
+https://www.youtube.com/watch?v=ydTxLCxdweg&t=649s
 
 https://developers.facebook.com/
 
